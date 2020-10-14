@@ -18,7 +18,7 @@ function populateBoxes(){
 
 	//create the grid of boxes (using html divs), and label the answers
 	params.columns.forEach(function(c,j){
-		var dv = d3.select('#'+c.toLowerCase()).select('.boxContainer').selectAll('.box')
+		var dv = d3.select('#'+params.cleanString(c)).select('.boxContainer').selectAll('.box')
 			.data(params.answers.columns).enter()
 			.filter(function(d) { return !d.includes('Timestamp') })
 				.append('div')

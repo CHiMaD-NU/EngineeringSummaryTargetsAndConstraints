@@ -8,7 +8,7 @@ function defineParams(){
 
 		//this could in principle come from the answers file
 		//this.columns = ['Processing','Structure','Properties','Performance'];
-		this.columns = ['Target','Constrain','Not applicable'];
+		this.columns = ['Target','Constraint','Not applicable'];
 
 //the URL of the json getter of the responses sheet
 //in order to get this URL:

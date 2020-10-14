@@ -84,6 +84,7 @@ function loadAnswers() {
 		//d3.csv('src/data/responses.csv'),
 	]).then(function(d) {
 		params.answers = d[0];
+		console.log(params.answers)
 		populateBoxes();
 		//params.responses = d[1];
 		//plotResponses();
