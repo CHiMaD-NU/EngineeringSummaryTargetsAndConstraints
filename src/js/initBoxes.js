@@ -22,8 +22,8 @@ function populateBoxes(){
 			.data(params.answers.columns).enter()
 			.filter(function(d) { return !d.includes('Timestamp') })
 				.append('div')
-					.attr('class', function(d,j){return 'box '+c})
-					.attr('id', function(d,j){return c+params.cleanString(d);})
+					.attr('class', function(d,j){return 'box '+params.cleanString(c)})
+					.attr('id', function(d,j){return params.cleanString(c)+params.cleanString(d);})
 					.style('border-width',function(d,j){
 						if (c.toLowerCase().includes(params.answers[0][d].toLowerCase())) {
 							return 4
@@ -73,7 +73,7 @@ function countUniq(arr){
 }
 
 function colorBoxes(){
-
+	console.log(params.responses)
 	//count up all the responses
 	params.responses.columns.forEach(function(rc,i){
 		if (!rc.includes('Timestamp')){
@@ -84,7 +84,7 @@ function colorBoxes(){
 				if (j == params.responses.length-1){
 					uVals = countUniq(vals);
 					params.columns.forEach(function(c,k){
-						id = c+params.cleanString(rc)
+						id = params.cleanString(c)+params.cleanString(rc)
 						var pct = 0;
 						if (uVals.num[params.cleanString(c)]){
 							pct = uVals.num[params.cleanString(c)]/params.responses.length;
