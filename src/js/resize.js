@@ -5,7 +5,7 @@ function resizePara(lim, nLim){
 	var para = document.getElementById('paraColumn');
 	var fs = parseFloat(window.getComputedStyle(para, null).getPropertyValue('font-size'));
 	var rect = para.getBoundingClientRect();
-	var height = window.innerHeight - rect.top;
+	var height = window.innerHeight - rect.top - 0.04*window.innerHeight; //to account for margins and poor precision on this method
 	var diff = height - rect.height;
 	var nTrial = 0;
 	var fac = 0.5;
@@ -19,7 +19,7 @@ function resizePara(lim, nLim){
 		fs = parseFloat(window.getComputedStyle(para, null).getPropertyValue('font-size'));
 		rect = para.getBoundingClientRect();
 		diff = height - rect.height;
-		//console.log("para", nTrial, diff, fs, mult)
+		//console.log("para", nTrial, diff, fs, mult, rect.height, height)
 		nTrial += 1
 	}	
 }
@@ -95,7 +95,7 @@ function resizeBoxes(lim, nLim){
 		rect = container.getBoundingClientRect();
 		boxRect = boxContainer.getBoundingClientRect();
 		diff = height - rect.height;
-		//console.log("box", nTrial, rect.height, boxRect.height, diff, bw, bh, fsB, fsR, fsC, mult)
+		//console.log("box", nTrial, rect.height, boxRect.height*2., boxRect.height, diff, bw, bh, fsB, fsR, fsC, mult)
 		nTrial += 1
 
 	}
@@ -103,23 +103,21 @@ function resizeBoxes(lim, nLim){
 
 	//fix in case the boxes end up on two lines (this is getting rather messy!)
 	nTrial = 0;
-	while (rect.height >= boxRect.height*2. & nTrial < nLim){
+	while ((rect.height >= boxRect.height*2.) & nTrial < nLim){
 		var mult = mult - 0.01;
 
 		doBoxResize(bw,bh,fsB,fsR,fsC, mult);
 
-		bw = parseFloat(d3.select('.box').style('width'));
-		bh = parseFloat(d3.select('.box').style('height'));
-		fsB = parseFloat(d3.select('.box').style('font-size'));
-		fsR = parseFloat(d3.select('.rowTitle').style('font-size'));
-		fsC = parseFloat(d3.select('.columnTitle').style('font-size'));
 		rect = container.getBoundingClientRect();
 		boxRect = boxContainer.getBoundingClientRect();
 		diff = height - rect.height;
-		//console.log("box", nTrial, rect.height, boxRect.height, diff, bw, bh, fsB, fsR, fsC, mult)
+		console.log("box2", nTrial, rect.height, boxRect.height*2., boxRect.height, diff, bw, bh, fsB, fsR, fsC, mult)
 		nTrial += 1
 
 	}
+	// var mult = mult - 0.01;
+	// doBoxResize(bw,bh,fsB,fsR,fsC, mult);
+
 
 }
 function resizer(){
