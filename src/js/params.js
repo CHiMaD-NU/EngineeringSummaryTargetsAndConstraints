@@ -17,6 +17,9 @@ function defineParams(){
 // 2. from the URL, get the ID (between the /d/ and next / in the URL)
 // 3. input that <SHEET_ID> into the following command : https://spreadsheets.google.com/feeds/cells/<SHEET_ID>/1/public/values?alt=json-in-script
 		this.surveyFile = 'https://spreadsheets.google.com/feeds/cells/1elFbmhCeMFFY198XqqTRRiHIPKllnPF_CFVkZSUFHbg/1/public/values?alt=json-in-script&callback=readGoogleSheet'
+		//did they update this without telling me?  It's not published to the web so I can't read it...
+		//this.surveyFile = 'https://spreadsheets.google.com/feeds/cells/https://docs.google.com/spreadsheets/d/1wsi-RLIluaNp83Gjg3Cy8-Aa4HjXmkmCjlimx5XSO_g/edit#gid=1109169067/1/public/values?alt=json-in-script&callback=readGoogleSheet'
+
 
 //this will hold the answers and responses as read in from the files
 		this.answers;

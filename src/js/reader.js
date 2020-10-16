@@ -52,18 +52,17 @@ function readGoogleSheet(json) {
 				var cell = data[r]["gs$cell"];
 				var val = cell["$t"];
 				if (cell.col == 1) {
-					j = 0;
 					row = {};
+					keys.forEach(function(k){row[k] = "";});
 				}
 
 				if (cell.row == 1){
 					keys.push(val)
 				} else {
-					row[keys[j]] = val;
+					row[keys[cell.col-1]] = val;
 				}
 
-				j += 1;
-				if (j >= keys.length & cell.row > 1){
+				if (cell.col == keys.length & cell.row > 1){
 					out.push(row);
 				}
 			}
